@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="splashBackgroundColor">#6ABAC5</color>
+    <color name="cardTextColor">#8F0C0000</color>
+
+    <color name="shimmerColor">#E7E7E7</color>
+    <color name="shimmerTextBackground">#54C6BEBE</color>
+
+    <color name="bottomNavPrimaryColor">#6ABAC5</color>
+    <color name="bottomNavSecondaryColor">#FF9800</color>
+
+
+</resources>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.PostFragment">
+
+
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_16sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_180sdp"
+        />
+
+    <TextView
+        android:id="@+id/newsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/indicator"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:text="News"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_24ssp"
+        android:textStyle="bold"/>
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/indicator"
+        android:layout_marginTop="@dimen/_16sdp"
+        />
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/newsTxt"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postVerRec"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/newsTxt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            tools:listitem="@layout/item_post_rec"
+            />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/viewPagerShimmerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <include
+                layout="@layout/item_shimmer_pager"/>
+            <include
+                layout="@layout/item_shimmer_pager"/>
+            <include
+                layout="@layout/item_shimmer_pager"/>
+            <include
+                layout="@layout/item_shimmer_pager"/>
+            <include
+                layout="@layout/item_shimmer_pager"/>
+            <include
+                layout="@layout/item_shimmer_pager"/>
+            <include
+                layout="@layout/item_shimmer_pager"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/recViewShimmerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/newsTxt"
+        android:layout_marginTop="@dimen/_16sdp">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical">
+
+           <include
+               layout="@layout/item_shimmer_rec"/>
+           <include
+               layout="@layout/item_shimmer_rec"/>
+           <include
+               layout="@layout/item_shimmer_rec"/>
+           <include
+               layout="@layout/item_shimmer_rec"/>
+           <include
+               layout="@layout/item_shimmer_rec"/>
+           <include
+               layout="@layout/item_shimmer_rec"/>
+
+       </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

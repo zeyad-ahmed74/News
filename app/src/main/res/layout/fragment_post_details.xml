@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="@dimen/_6sdp"
-            android:background="@drawable/custom_card"
             app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/white"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -150,6 +150,7 @@
                     app:layout_constraintTop_toBottomOf="@id/newsImage"
                     app:layout_constraintBottom_toBottomOf="@id/marker"
                     app:layout_constraintStart_toEndOf="@id/marker"
+                    android:textColor="@color/black"
                     />
 
 

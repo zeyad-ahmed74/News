@@ -3,17 +3,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="splashBackgroundColor">#6ABAC5</color>
-    <color name="cardTextColor">#8F0C0000</color>
+    <color name="cardNewBackground">#6ABAC5</color>
 
     <color name="shimmerColor">#E7E7E7</color>
     <color name="shimmerTextBackground">#54C6BEBE</color>
 
     <color name="bottomNavPrimaryColor">#6ABAC5</color>
-    <color name="bottomNavSecondaryColor">#FF9800</color>
 
 
-    <color name="selected_checkbox">#6A79C5</color>
+    <color name="state_unchecked_color">@color/black</color>
 
+    <color name="state_checked_color">#6ABAC5</color>
+
+    <color name="textColor">#FF000000</color>
+
+
+    <color name="bottomTintItem">@color/black</color>
+
+    <color name="searchIconTint">@color/black</color>
 
 </resources>

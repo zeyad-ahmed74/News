@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2 hours"
             android:textSize="@dimen/_16ssp"
-            android:textColor="@color/cardTextColor"/>
+            android:textColor="@color/textColor"/>
 
         <TextView
             android:id="@+id/newsHeader"
@@ -49,7 +49,7 @@
             android:layout_marginEnd="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_45sdp"
             android:textSize="@dimen/_18ssp"
-            android:textColor="@color/cardTextColor"
+            android:textColor="@color/textColor"
             android:paddingHorizontal="@dimen/_5sdp"
             android:maxLines="3"
             />

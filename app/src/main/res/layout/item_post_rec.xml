@@ -27,7 +27,7 @@
         android:layout_marginStart="@dimen/_16sdp"
         tools:text="1 hours"
         android:textSize="@dimen/_16ssp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/textColor"/>
 
     <TextView
         android:id="@+id/newsHeader"
@@ -39,7 +39,7 @@
         tools:text="agdag adgagda"
         android:maxLines="2"
         android:textSize="@dimen/_16ssp"
-        android:textColor="@color/black"
+        android:textColor="@color/textColor"
         android:paddingHorizontal="@dimen/_2sdp"
         />
 

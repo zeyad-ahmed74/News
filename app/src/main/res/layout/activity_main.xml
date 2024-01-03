@@ -26,10 +26,10 @@
           android:layout_height="@dimen/_60sdp"
           app:layout_constraintBottom_toBottomOf="parent"
           app:menu="@menu/bottom_nav_menu"
-          app:itemIconTint="@color/black"
+          app:itemIconTint="@color/bottomTintItem"
           app:labelVisibilityMode="unlabeled"
-          app:itemRippleColor="@color/splashBackgroundColor"
-
+          app:itemRippleColor="@color/black"
+          android:background="@color/bottomNavPrimaryColor"
           />
 
 

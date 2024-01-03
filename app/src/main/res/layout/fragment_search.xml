@@ -18,7 +18,7 @@
         style="@style/TextInputLayout"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/search"
-        app:endIconTint="@color/black"
+        app:endIconTint="@color/searchIconTint"
         >
 
         <com.google.android.material.textfield.TextInputEditText

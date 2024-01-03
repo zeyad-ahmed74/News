@@ -1,6 +1,10 @@
 package com.example.news.data.model
 
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import java.io.Serializable
 
 data class NewResponse(
@@ -15,8 +19,12 @@ data class NewResponse(
 	val status: String? = null
 )
 
+@Entity("BookMarks")
+@Parcelize
 data class ArticlesItem(
 
+	@PrimaryKey(autoGenerate = true)
+	val id : Int,
 	@field:SerializedName("publishedAt")
 	val publishedAt: String? = null,
 
@@ -24,10 +32,10 @@ data class ArticlesItem(
 	val author: String? = null,
 
 	@field:SerializedName("urlToImage")
-	val urlToImage: Any? = null,
+	val urlToImage: String? = null,
 
 	@field:SerializedName("description")
-	val description: Any? = null,
+	val description: String? = null,
 
 	@field:SerializedName("source")
 	val source: Source? = null,
@@ -39,9 +47,10 @@ data class ArticlesItem(
 	val url: String? = null,
 
 	@field:SerializedName("content")
-	val content: Any? = null
-):Serializable
+	val content: String? = null
+):Parcelable
 
+@Parcelize
 data class Source(
 
 	@field:SerializedName("name")
@@ -49,4 +58,4 @@ data class Source(
 
 	@field:SerializedName("id")
 	val id: String? = null
-)
+):Parcelable

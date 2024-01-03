@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/newsImage"
         android:layout_width="@dimen/_100sdp"
@@ -30,7 +31,7 @@
 
     <TextView
         android:id="@+id/newsHeader"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_150sdp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/newsImage"
         app:layout_constraintStart_toEndOf="@id/newsImage"
@@ -42,16 +43,15 @@
         android:paddingHorizontal="@dimen/_2sdp"
         />
 
-    <ImageView
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/bookMark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/newsImage"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:src="@drawable/bookmark"
-        app:tint="@color/black"
-        android:importantForAccessibility="no" />
+        android:button="@drawable/bookmark"
+        app:buttonTint="@color/checkbox_selector"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

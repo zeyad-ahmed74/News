@@ -8,4 +8,6 @@
     <string name="settings">Settings</string>
     <string name="article">article</string>
     <string name="search_for_news">Search for News</string>
+    <string name="news">News</string>
+    <string name="_2_hours">2 hours</string>
 </resources>

@@ -3,8 +3,8 @@ package com.example.news.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.news.data.source.remote.RetrofitClient
-import com.example.news.ui.SearchIntent
-import com.example.news.ui.SearchViewState
+import com.example.news.ui.searchscreen.SearchIntent
+import com.example.news.ui.searchscreen.SearchViewState
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,6 +17,7 @@ class SearchViewModel :ViewModel(){
 
     private val _viewState = MutableStateFlow<SearchViewState>(SearchViewState.Loading)
     val viewState : StateFlow<SearchViewState> get() = _viewState
+
 
     init {
         processIntent()

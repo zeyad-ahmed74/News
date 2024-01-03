@@ -29,6 +29,7 @@
           app:itemIconTint="@color/black"
           app:labelVisibilityMode="unlabeled"
           app:itemRippleColor="@color/splashBackgroundColor"
+
           />
 
 

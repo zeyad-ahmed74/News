@@ -3,8 +3,8 @@ package com.example.news.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.news.data.source.remote.RetrofitClient
-import com.example.news.ui.PostIntent
-import com.example.news.ui.PostViewState
+import com.example.news.ui.homescreen.PostIntent
+import com.example.news.ui.homescreen.PostViewState
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

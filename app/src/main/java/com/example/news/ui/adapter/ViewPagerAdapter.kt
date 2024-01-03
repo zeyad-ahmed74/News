@@ -1,20 +1,16 @@
 package com.example.news.ui.adapter
 
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.example.news.R
+import com.example.news.data.model.ArticlesItem
 import com.example.news.data.model.NewResponse
 import com.example.news.databinding.ItemPostPagerBinding
-import com.example.news.ui.MyUtils
-import com.facebook.shimmer.Shimmer
-import com.facebook.shimmer.ShimmerDrawable
+import com.example.news.ui.util.TimeAndDate
 
 class ViewPagerAdapter(
-    private val new:NewResponse?=null
+    private val new:NewResponse?=null,
+    private val listener:RecyclerClickListener?=null
 ):RecyclerView.Adapter<ViewPagerAdapter.ViewPagerHolder>(){
 
 
@@ -32,17 +28,33 @@ class ViewPagerAdapter(
     override fun onBindViewHolder(holder: ViewPagerHolder, position: Int) {
         val article = new?.articles?.get(position)
         with(holder){
-          binding.apply {
+          binding.apply{
               newsHeader.text = article?.title
-              newsDate.text = MyUtils.dateFormat(article?.publishedAt)
+              newsDate.text = TimeAndDate.dateFormat(article?.publishedAt)
           }
+
         }
-
-
 
 
     }
 
-    inner class ViewPagerHolder(val binding : ItemPostPagerBinding):RecyclerView.ViewHolder(binding.root)
+    inner class ViewPagerHolder(val binding : ItemPostPagerBinding):RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                listener?.onItemClick(new?.articles?.get(adapterPosition))
+            }
+            binding.bookMark.setOnClickListener {
+                listener?.onBookMarkClicked(new?.articles?.get(adapterPosition))
+            }
+        }
+    }
+
+
+    interface RecyclerClickListener{
+        fun onItemClick(articlesItem: ArticlesItem?)
+        fun onBookMarkClicked(articlesItem: ArticlesItem?)
+    }
+
+
 
 }

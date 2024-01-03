@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.SearchFragment">
+    tools:context=".ui.searchscreen.SearchFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/searchInputLayout"
@@ -22,6 +22,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text"

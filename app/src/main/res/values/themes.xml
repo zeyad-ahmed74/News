@@ -9,6 +9,7 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/black</item>
 
+
     </style>
 
     <style name="Theme.News" parent="Base.Theme.News" />

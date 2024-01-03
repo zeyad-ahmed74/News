@@ -20,7 +20,7 @@
             android:layout_height="match_parent"/>
 
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/newsImage"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_160sdp"
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/newsHeader"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_250sdp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,19 +50,18 @@
             android:layout_marginTop="@dimen/_45sdp"
             android:textSize="@dimen/_18ssp"
             android:textColor="@color/cardTextColor"
-            android:padding="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_5sdp"
             android:maxLines="3"
             />
 
-        <ImageView
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/bookMark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_16sdp"
-            android:src="@drawable/bookmark"
-            app:layout_constraintTop_toTopOf="parent"
+            android:button="@drawable/bookmark"
+            app:layout_constraintTop_toTopOf="@id/newsDate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/cardTextColor"
+            app:buttonTint="@color/checkbox_selector"
             />
 
 

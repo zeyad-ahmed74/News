@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.PostFragment">
+    tools:context=".ui.homescreen.PostFragment">
 
 
 
@@ -17,14 +17,14 @@
         android:layout_marginTop="@dimen/_180sdp"
         />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/newsTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/indicator"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/_32sdp"
-        android:text="News"
+        android:text="@string/news"
         android:textColor="@color/black"
         android:textSize="@dimen/_24ssp"
         android:textStyle="bold"/>

@@ -21,18 +21,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNav(){
-        val navControl = this.findNavController(R.id.nav_post_graph)
-        binding.bottomNav.setupWithNavController(navControl)
 
-        navControl.addOnDestinationChangedListener{ _, destination , _ ->
+        //binding.bottomNav.setupWithNavController(binding.navPostGraph.findNavController())
+          val navController = this.findNavController(R.id.nav_post_graph)
+          binding.bottomNav.setupWithNavController(navController)
+
+          navController.addOnDestinationChangedListener{ _, destination , _ ->
 
             when(destination.id){
                 R.id.splashFragment -> hideBottomNav()
                 else -> showBottomNav()
 
             }
-        }
+          }
     }
+
 
     private fun showBottomNav() {
         binding.bottomNav.visibility = View.VISIBLE

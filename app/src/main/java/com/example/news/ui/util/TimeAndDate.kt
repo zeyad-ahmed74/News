@@ -1,10 +1,10 @@
-package com.example.news.ui
+package com.example.news.ui.util
 
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class MyUtils {
+class TimeAndDate {
 
     companion object {
 

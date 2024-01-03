@@ -18,10 +18,5 @@
         android:title="@string/book_mark"
         android:icon="@drawable/bookmark"/>
 
-    <item
-        android:id="@+id/settingsFragment"
-        android:title="@string/settings"
-        android:icon="@drawable/settings"/>
-
 
 </menu>

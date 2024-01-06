@@ -10,4 +10,7 @@
     <string name="search_for_news">Search for News</string>
     <string name="news">News</string>
     <string name="_2_hours">2 hours</string>
+    <string name="opps">Opps!</string>
+    <string name="check_the_internet_connection">Please Check Your Connection</string>
+    <string name="retry">Retry</string>
 </resources>

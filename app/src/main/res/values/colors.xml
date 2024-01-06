@@ -8,7 +8,7 @@
     <color name="shimmerColor">#E7E7E7</color>
     <color name="shimmerTextBackground">#54C6BEBE</color>
 
-    <color name="bottomNavPrimaryColor">#6ABAC5</color>
+    <color name="bottomNavPrimaryColor">@color/white</color>
 
 
     <color name="state_unchecked_color">@color/black</color>

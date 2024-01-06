@@ -1,10 +1,15 @@
 package com.example.news.ui.homescreen
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -20,12 +25,13 @@ import kotlinx.coroutines.launch
 import com.example.news.data.model.NewResponse
 import com.example.news.ui.adapter.ViewPagerAdapter
 import com.example.news.ui.adapter.NewsAdapter
+import com.example.news.ui.util.NetworkManager
 import com.example.news.viewModel.BookMarkViewModel
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.snackbar.Snackbar
 
 
-class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener {
+class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener{
 
     private val postViewModel: PostViewModel by lazy {
         ViewModelProvider(this)[PostViewModel::class.java]
@@ -38,6 +44,8 @@ class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener {
     private lateinit var binding: FragmentPostBinding
     private var articles : List<ArticlesItem>? = null
     private var articleExistOrNot:Boolean = false
+    private lateinit var builder : AlertDialog
+    private var isConnected: Boolean = false
 
 
     override fun onCreateView(
@@ -51,11 +59,31 @@ class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPostBinding.bind(view)
 
+        createCustomDialog()
+        val networkConnection = NetworkManager(requireContext())
+        networkConnection.observe(viewLifecycleOwner){
+            if(it){
+                if (builder.isShowing){
+                    builder.hide()
+                }
+                sendIntents()
+                renderRecNewsVer()
+                observe()
+                listeners()
+                binding.swipeRefreshLayout.setOnRefreshListener{
+                    binding.swipeRefreshLayout.isRefreshing = false
+                }
+            }
+            else
+            {
+                if(!builder.isShowing)
+                    builder.show()
+            }
+        }
+    }
 
-        sendIntents()
-        renderRecNewsVer()
-        observe()
 
+    private fun listeners(){
         newsAdapter.setOnItemClickListener{article ->
             checkExistingArticle(article)
             val bundle = Bundle().apply {
@@ -76,16 +104,15 @@ class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener {
                 Snackbar.make(requireView(),"Article Saved Successfully",Snackbar.LENGTH_LONG).show()
             }
         }
-
-
-        binding.swipeRefreshLayout.setOnRefreshListener {
-
-            binding.swipeRefreshLayout.isRefreshing = false
-        }
-
-
     }
 
+    private fun createCustomDialog() {
+        val view = layoutInflater.inflate(R.layout.check_internet_dialog,null)
+        builder = AlertDialog.Builder(requireContext(),R.style.CustomAlertDialog)
+            .setView(view)
+            .setCancelable(false)
+            .create()
+    }
 
     override fun onItemClick(articlesItem: ArticlesItem?){
         checkExistingArticle(articlesItem)
@@ -103,7 +130,6 @@ class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener {
            Snackbar.make(requireView(),"Article Saved Successfully",Snackbar.LENGTH_LONG).show()
        }
     }
-
 
     private fun sendIntents() {
         lifecycleScope.launch {
@@ -139,18 +165,16 @@ class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener {
         }
     }
 
-    private fun initVerRec(newsResponse: NewResponse?) {
+    private fun initVerRec(newsResponse: NewResponse?){
         newsAdapter.differ.submitList(newsResponse?.articles)
         stopShimmer(binding.recViewShimmerLayout)
         binding.postVerRec.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-
     }
 
-    private fun initViewPager(newsResponse: NewResponse) {
-
+    private fun initViewPager(newsResponse: NewResponse){
         viewPagerAdapter = ViewPagerAdapter(newsResponse,this)
         stopShimmer(binding.viewPagerShimmerLayout)
         binding.viewPager.apply {
@@ -160,8 +184,6 @@ class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener {
         binding.indicator.setViewPager(binding.viewPager)
     }
 
-
-
     private fun observe(){
         bookMarkViewModel.getBookMarks()?.observe(viewLifecycleOwner, Observer {
             articles = it
@@ -169,12 +191,13 @@ class PostFragment : Fragment() , ViewPagerAdapter.RecyclerClickListener {
     }
 
     private fun checkExistingArticle(articleItem: ArticlesItem?):Boolean{
-           for (i in articles?.indices!!){
-               if(articles!![i].url == articleItem?.url){
-                   articleExistOrNot = true
-                   break
-               }
-           }
-         return articleExistOrNot
+        for (i in articles?.indices!!) {
+            if (articles!![i].url == articleItem?.url) {
+                articleExistOrNot = true
+                break
+            }
+        }
+        return articleExistOrNot
     }
+
 }
